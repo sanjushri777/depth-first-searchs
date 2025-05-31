@@ -1,146 +1,152 @@
-<h1>ExpNo 2 : Implement Depth First Search Traversal of a Graph</h1> 
-<h3>Name:SANJUSHRI A </h3>
-<h3>Register Number: 212223040187  </h3>
-<H3>Aim:</H3>
-<p> To Implement Depth First Search Traversal of a Graph using Python 3.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DFS Traversal - Exp No 2</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      line-height: 1.6;
+    }
+    h1, h3 {
+      color: #2e6da4;
+    }
+    h1 {
+      font-size: 26px;
+    }
+    h3 {
+      font-size: 20px;
+    }
+    p, ol, ul {
+      font-size: 16px;
+    }
+    code {
+      background: #f4f4f4;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 12px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    hr {
+      border: 1px solid #ddd;
+    }
+    strong {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Exp No 2: Implement Depth First Search Traversal of a Graph</h1>
+<h3>Name: SANJUSHRI A</h3>
+<h3>Register Number: 212223040187</h3>
+
+<h3>Aim:</h3>
+<p>To implement Depth First Search Traversal of a Graph using Python 3.</p>
+
 <h3>Theory:</h3>
-<strong>Depth First Traversal </strong>(or DFS) for a graph is like Depth First Traversal of a tree. The only catch here is that, unlike trees, graphs may contain cycles (a node may be visited twice). Use a Boolean visited array to avoid processing a node more than once. A graph can have more than one DFS traversal. 
-Depth-first search is an algorithm for traversing or searching trees or graph data structures. The algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph) and explores as far as possible along each branch before backtracking.
-Step 1: Initially, stack and visited arrays are empty.
+<p><strong>Depth First Traversal</strong> (or DFS) for a graph is similar to Depth First Traversal of a tree. Unlike trees, graphs may contain cycles (a node may be visited twice), so a boolean <code>visited</code> array is used to avoid processing a node more than once.</p>
 
- ![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/640b3c6f-3ac1-49a2-a955-68da9a71f446)
+<p>A graph can have more than one DFS traversal. Depth-first search starts at the root (or any arbitrary node) and explores as far as possible along each branch before backtracking.</p>
 
+<p><strong>Steps:</strong></p>
+<ol>
+  <li>Initially, stack and visited arrays are empty.</li>
+  <li>Visit the starting node (e.g., node 0) and put its adjacent unvisited nodes into the stack.</li>
+  <li>Visit the node on top of the stack, mark it as visited, and push its unvisited neighbors into the stack.</li>
+  <li>Continue until all nodes are visited and the stack is empty.</li>
+</ol>
 
-Queue and visited arrays are empty initially.
-Stack and visited arrays are empty initially.
-Step 2: Visit 0 and put its adjacent nodes which are not visited yet into the stack.
- ![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/86dcf7d9-1f9d-49b0-a821-5976a6e77606)
-
- Visit node 0 and put its adjacent nodes (1, 2, 3) into the stack
- Visit node 0 and put its adjacent nodes (1, 2, 3) into the stack
-
-Step 3: Now, Node 1 at the top of the stack, so visit node 1 and pop it from the stack and put all of its adjacent nodes which are not visited in the stack.
- ![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/e6017942-08b1-4742-87ad-c97eb97bf985)
-
-Visit node 1
- Visit node 1
-
-Step 4: Now, Node 2 at the top of the stack, so visit node 2 and pop it from the stack and put all of its adjacent nodes which are not visited (i.e, 3, 4) in the stack.
- ![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/6e6d123c-60ae-4f9c-a27c-c4fc7e57d57c)
-
- Visit node 2 and put its unvisited adjacent nodes (3, 4) into the stack
- Visit node 2 and put its unvisited adjacent nodes (3, 4) into the stack
-
-Step 5: Now, Node 4 at the top of the stack, so visit node 4 and pop it from the stack and put all of its adjacent nodes which are not visited in the stack.
- ![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/20b76a05-5668-4da5-8189-e10fb1bb7238)
-
- Visit node 4
- Visit node 4
-
-Step 6: Now, Node 3 at the top of the stack, so visit node 3 and pop it from the stack and put all of its adjacent nodes which are not visited in the stack.
- ![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/3b88f04a-7846-4f75-89b4-22bbd5b48e52)
-
-Visit node 3
-Visit node 3
-
-Now, the Stack becomes empty, which means we have visited all the nodes, and our DFS traversal ends.
+<h3>Illustration:</h3>
+<ul>
+  <li><strong>Step 1:</strong> Stack and visited arrays are empty.</li>
+  <li><strong>Step 2:</strong> Visit node 0 → Stack: [1, 2, 3]</li>
+  <li><strong>Step 3:</strong> Visit node 1 → Stack: [2, 3, neighbors of 1]</li>
+  <li><strong>Step 4:</strong> Visit node 2 → Stack: [3, 4, neighbors of 2]</li>
+  <li><strong>Step 5:</strong> Visit node 4</li>
+  <li><strong>Step 6:</strong> Visit node 3</li>
+</ul>
 
 <h3>Algorithm:</h3>
-<B><ol>
- <li>Construct a Graph with Nodes and Edges</li>
- <li>Depth First Search Uses Stack and Recursion</li>
- <li>Insert a START node to the STACK</li>
- <li>Find its Successors Or neighbors and Check whether the node is visited or not</li>
- <li>If Not Visited, add it to the STACK. Else Call The Function Again Until No more nodes needs to be visited.</li>
-</ol></B>
+<ol>
+  <li>Construct a Graph with Nodes and Edges</li>
+  <li>DFS uses Stack and Recursion</li>
+  <li>Insert a START node to the STACK</li>
+  <li>Explore successors or neighbors if unvisited</li>
+  <li>If not visited, add to STACK; else, continue backtracking</li>
+</ol>
 
 <hr>
-<h3>Program</h3>
 
-```python
-from collections import defaultdict
+<h3>Program:</h3>
+<pre><code>from collections import defaultdict
 
-'''
-Depth First Search uses STACK AND RECURSION
-'''
-
+# Depth First Search using Stack and Recursion
 def dfs(graph, start, visited, path):
-    # Append the current node to the path list
     path.append(start)
-    
-    # Mark the current node as visited
     visited[start] = True
-    
-    # Iterate over the neighbors of the current node
     for neighbour in graph[start]:
         if not visited[neighbour]:
-            # Recursively call dfs on the unvisited neighbor
             dfs(graph, neighbour, visited, path)
-    
     return path
 
-# Initialize an empty defaultdict to represent the graph
+# Input the number of nodes and edges
 graph = defaultdict(list)
-
-# Read the number of nodes (n) and edges (e) from input
 n, e = map(int, input().split())
 
-# Add each edge to the graph
-for i in range(e):
+# Build the graph
+for _ in range(e):
     u, v = input().split()
     graph[u].append(v)
-    graph[v].append(u)  # Since the graph is undirected, add both directions
+    graph[v].append(u)  # undirected graph
 
-# Set the starting node
+# DFS traversal
 start = 'A'
-
-# Create an empty defaultdict to keep track of visited nodes
 visited = defaultdict(bool)
-
-# Create an empty list to store the traversed path
 path = []
+traversed_path = dfs(graph, start, visited, path)
+print(traversed_path)
+</code></pre>
 
-# Call the dfs function with the starting node, visited nodes, and path
-traversedpath = dfs(graph, start, visited, path)
+<h3>Sample Input:</h3>
+<pre><code>8 9
+A B
+A C
+B E
+C D
+B D
+C G
+D F
+G F
+F H
+</code></pre>
 
-# Print the traversed path
-print(traversedpath)
-
-```
-<h3>Sample Input</h3>
-<hr>
-8 9 <BR>
-A B <BR>
-A C <BR>
-B E <BR>
-C D <BR>
-B D <BR>
-C G <BR>
-D F <BR>
-G F <BR>
-F H <BR>
-<hr>
-<h3>Sample Output</h3>
-<hr>
-['A', 'B', 'E', 'D', 'C', 'G', 'F', 'H']
+<h3>Sample Output:</h3>
+<pre><code>['A', 'B', 'E', 'D', 'C', 'G', 'F', 'H']</code></pre>
 
 <hr>
 
-<hr>
-<h3>Sample Input</h3>
-<hr>
-5 5 <BR>
-0 1 <BR>
-0 2 <BR>
-0 3 <BR>
-2 3 <BR>
-2 4 <BR>
-<hr>
-<h3>Sample Output</h3>
-<hr>
-['0', '1', '2', '3', '4']
+<h3>Sample Input:</h3>
+<pre><code>5 5
+0 1
+0 2
+0 3
+2 3
+2 4
+</code></pre>
+
+<h3>Sample Output:</h3>
+<pre><code>['0', '1', '2', '3', '4']</code></pre>
 
 <hr>
+
 <h3>Result:</h3>
-<hr>
-<p>Thus,a Graph was constructed and implementation of Depth First Search for the same graph was done successfully.</p>
+<p>Thus, a graph was constructed and Depth First Search was implemented successfully.</p>
+
+</body>
+</html>
