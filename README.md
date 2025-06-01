@@ -128,6 +128,7 @@ F H <BR>
 
 <hr>
 ['A', 'B', 'E', 'D', 'C', 'G', 'F', 'H']
+
 ![image](https://github.com/user-attachments/assets/3a413a97-049f-46db-8911-d57f49bacdf8)
 
 
@@ -146,6 +147,7 @@ F H <BR>
 <h3>Sample Output</h3>
 <hr>
 ['0', '1', '2', '3', '4']
+
 ![image](https://github.com/user-attachments/assets/a97b9b3c-6aa0-4deb-9a16-9686cf8dabb7)
 
 
