@@ -71,47 +71,45 @@ Depth First Search uses STACK AND RECURSION
 '''
 
 def dfs(graph, start, visited, path):
-    # Append the current node to the path list
     path.append(start)
-    
-    # Mark the current node as visited
     visited[start] = True
     
-    # Iterate over the neighbors of the current node
     for neighbour in graph[start]:
         if not visited[neighbour]:
-            # Recursively call dfs on the unvisited neighbor
             dfs(graph, neighbour, visited, path)
     
     return path
 
-# Initialize an empty defaultdict to represent the graph
+# Initialize the graph
 graph = defaultdict(list)
 
-# Read the number of nodes (n) and edges (e) from input
-n, e = map(int, input().split())
+# Read number of nodes and edges
+n, e = map(int, input("Enter number of nodes and edges: ").split())
 
-# Add each edge to the graph
-for i in range(e):
+# Read edges (as strings to support both letters and numbers)
+for _ in range(e):
     u, v = input().split()
     graph[u].append(v)
-    graph[v].append(u)  # Since the graph is undirected, add both directions
+    graph[v].append(u)  # undirected graph
 
-# Set the starting node
-start = 'A'
+# Optional: sort neighbors for consistent DFS order
+for node in graph:
+    graph[node].sort()
 
-# Create an empty defaultdict to keep track of visited nodes
+# Starting node (can be 'A', '0', etc.)
+start = input("Enter starting node: ")
+
+# Visited dictionary
 visited = defaultdict(bool)
 
-# Create an empty list to store the traversed path
+# Path list
 path = []
 
-# Call the dfs function with the starting node, visited nodes, and path
+# Perform DFS
 traversedpath = dfs(graph, start, visited, path)
 
-# Print the traversed path
-print(traversedpath)
-
+# Output
+print("DFS Traversal:", traversedpath)
 ```
 <h3>Sample Input</h3>
 <hr>
@@ -127,8 +125,11 @@ G F <BR>
 F H <BR>
 <hr>
 <h3>Sample Output</h3>
+
 <hr>
 ['A', 'B', 'E', 'D', 'C', 'G', 'F', 'H']
+![image](https://github.com/user-attachments/assets/3a413a97-049f-46db-8911-d57f49bacdf8)
+
 
 <hr>
 
@@ -145,6 +146,8 @@ F H <BR>
 <h3>Sample Output</h3>
 <hr>
 ['0', '1', '2', '3', '4']
+![image](https://github.com/user-attachments/assets/a97b9b3c-6aa0-4deb-9a16-9686cf8dabb7)
+
 
 <hr>
 <h3>Result:</h3>
